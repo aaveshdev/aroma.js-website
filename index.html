@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>Aroma.js - Next-Gen Web Framework</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Aroma.js</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#get-started">Get Started</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                </ul>
+                <div class="burger-menu" id="burger-menu">
+                    <div class="burger"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Aroma.js</h1>
+            <p>A lightweight, feature-rich, and developer-friendly web framework to build modern applications with ease.</p>
+            <a href="#get-started" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Lightweight & Fast</h3>
+                    <p>Designed for performance, Aroma.js ensures your applications run smoothly and efficiently.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Modular Routing</h3>
+                    <p>Easily create and mount modular routers for better code organization.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Middleware Support</h3>
+                    <p>Flexible middleware integration for robust application development.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Session & Cookie Management</h3>
+                    <p>Built-in support for managing sessions and cookies seamlessly.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Template Engine</h3>
+                    <p>Easily render dynamic views with the built-in template engine.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Static File Serving</h3>
+                    <p>Serve static files directly with minimal configuration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documentation" class="documentation">
+        <div class="container">
+            <h2>Documentation</h2>
+            <p>Everything you need to get started with Aroma.js.</p>
+            <div class="doc-links">
+                <a href="#installation" class="doc-link">Installation</a>
+                <a href="#routing" class="doc-link">Routing</a>
+                <a href="#router" class="doc-link">Router</a>
+                <a href="#middleware" class="doc-link">Middleware</a>
+                <a href="#sessions" class="doc-link">Session Management</a>
+                <a href="#template-engine" class="doc-link">Template Engine</a>
+            </div>
+
+            <div id="installation">
+                <h3>Installation</h3>
+                <p>Install Aroma.js using npm:</p>
+                <pre><code>npm install aroma.js</code></pre>
+            </div>
+
+            <div id="routing">
+                <h3>Routing</h3>
+                <p>Create routes easily:</p>
+                <pre><code>const app = new Aroma();
+
+app.get('/hello', (req, res) => {
+    res.send({ message: 'Hello, World!' });
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));</code></pre>
+            </div>
+
+            <div id="router">
+                <h3>Router</h3>
+                <p>Create modular routers for better organization:</p>
+                <pre><code>import { Router } from 'aroma.js';
+
+const router = new Router();
+
+router.get('/', (req, res) => {
+    res.send({ message: 'Hello from Router!' });
+});
+
+router.get('/:id', (req, res) => {
+    res.send({ message: `User ID: ${req.params.id}` });
+});
+
+export default router;</code></pre>
+                <p>Mount the router in your application:</p>
+                <pre><code>import Aroma from 'aroma.js';
+import userRouter from './routes/user';
+
+const app = new Aroma();
+app.use('/users', userRouter);
+
+app.listen(3000, () => console.log('Server running on port 3000'));</code></pre>
+            </div>
+
+            <div id="middleware">
+                <h3>Middleware</h3>
+                <p>Use middleware to enhance functionality:</p>
+                <pre><code>app.use((req, res, next) => {
+    console.log(`${req.method} request to ${req.url}`);
+    next();
+});</code></pre>
+            </div>
+
+            <div id="sessions">
+                <h3>Session Management</h3>
+                <p>Manage sessions seamlessly:</p>
+                <pre><code>app.useSessions();
+
+app.get('/set-session', (req, res) => {
+    req.session.username = 'JohnDoe';
+    res.send({ message: 'Session set' });
+});
+
+app.get('/get-session', (req, res) => {
+    res.send({ username: req.session.username });
+});</code></pre>
+            </div>
+
+            <div id="template-engine">
+                <h3>Template Engine</h3>
+                <p>Render dynamic templates:</p>
+                <pre><code>app.enableTemplateEngine();
+
+app.get('/home', (req, res) => {
+    app.render(res, 'index', { title: 'Welcome', user: 'John' });
+});</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-started" class="get-started">
+        <div class="container">
+            <h2>Get Started</h2>
+            <p>Install Aroma.js and start building your application in minutes.</p>
+            <pre><code>npm install aroma.js</code></pre>
+        </div>
+    </section>
+
+    <section id="examples" class="examples">
+        <div class="container">
+            <h2>Examples</h2>
+            <div class="example-list">
+                <div class="example-item">
+                    <h3>Basic Server</h3>
+                    <pre><code>const app = new Aroma();
+
+app.get('/', (req, res) => {
+    res.send({ message: 'Hello, World!' });
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));</code></pre>
+                </div>
+                <div class="example-item">
+                    <h3>Modular Router</h3>
+                    <pre><code>const router = new Router();
+
+router.get('/', (req, res) => {
+    res.send({ message: 'Hello from Router!' });
+});
+
+app.use('/api', router);</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Aroma.js. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
